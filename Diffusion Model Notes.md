@@ -49,6 +49,7 @@ The algorithm pseudocode mentioned in the DDPM paper:
 ![[Pasted image 20240605122821.png]]
 Following plot shows something... I don't quite understand but it should be helpful to understand latent diffusion models. 
 At each time t, the **distortion** is calculated as the root mean squared error $\sqrt{\| \mathbf x_0 - \hat{\mathbf x}_0 \|^2 / D}$, and the **rate** is calculated as the cumulative number of bits received so far at time t.
+Maybe that works a bit...
 ![[Pasted image 20240605123422.png]]
 
 ## Interpolation
