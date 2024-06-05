@@ -4,7 +4,7 @@ https://cvpr2022-tutorial-diffusion-models.github.io/
 https://www.youtube.com/watch?v=cS6JQpEY9cs
 https://arxiv.org/abs/2201.09865
 ## Forward Diffusion Process
-Totally T steps of adding Gaussian noises into the real data.
+Totally $T$ steps of adding Gaussian noises into the real data, breaking the existing structure of the image gradually.
 $$\begin{align}
 q(\mathbf{x}_t\mid\mathbf{x}_{t-1})=\mathcal{N}(\mathbf{x}_t;\sqrt{1-\beta_t}\mathbf{x}_{t-1},\beta_t\mathbf{I}) \\
 q(\mathbf{x}_{1:T}\mid\mathbf{x}_0)=\prod_{t=1}^Tq(\mathbf{x}_t\mid\mathbf{x}_{t-1})
@@ -35,30 +35,33 @@ This can be proved by the definition of KL divergence that:
 $$L_{VLB}=\mathbb{E}_{q(\mathbf{x}_{0:T})}[\log\frac{q(\mathbf{x}_{1:T}|\mathbf{x}_0)}{p_\theta(\mathbf{x}_{0:T})}]\geq\mathbb{E}_{q(\mathbf{x_0})}\log p_\theta(\mathbf{x}_0)=NLL$$
 We can rewrite $L_{VLB}$ in this form to analytically calculate the bound.
 $$\begin{align*} L_{\text{VLB}} &= L_T + L_{T-1} + \cdots + L_0 \\ \text{where } L_T &= D_{\text{KL}}(q(\mathbf{x}_T \mid \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_T)) \\ L_t &= D_{\text{KL}}(q(\mathbf{x}_t \mid \mathbf{x}_{t+1}, \mathbf{x}_0) \parallel p_\theta(\mathbf{x}_t \mid \mathbf{x}_{t+1})) \quad \text{for } 1 \leq t \leq T - 1 \\ L_0 &= -\log p_\theta (\mathbf{x}_0 \mid \mathbf{x}_1) \end{align*}$$
-$L_T$ is constant here, because no learnable parameters are here. $L_0$ is using a discrete decoder and has a special form. $L_t (1 \leq t \leq T - 1)$ is easier to calculate.
+$L_T$ is constant, because no learnable parameters are here. $L_0$ is using a discrete decoder and has a special form. $L_t (1 \leq t \leq T - 1)$ is easier to calculate.
 Here we use a reparameterization trick to simplify $L_t$. It's the KL-divergence between two Gaussian distributions, so here the authors assumed that they want to minimize the difference of their means. After we simplify the goal, and do the **following reparameterization**, the goal is clearer:
 $$\boldsymbol\mu_\theta(\mathbf{x}_t,t)=\frac{1}{\sqrt{\alpha_t}}(\mathbf{x}_t-\frac{1-\alpha_t}{\sqrt{1-\bar\alpha_t}}\boldsymbol\epsilon_\theta(\mathbf{x}_t,t))$$
 Plugging in, we get that:
 $$L_t=\mathbb{E}_{\mathbf{x}_0, \boldsymbol\epsilon} \left[ \frac{(1 - \alpha_t)^2}{2 \alpha_t (1 - \bar\alpha_t)\|\boldsymbol\Sigma_\theta\|_2^2} \left\| \boldsymbol\epsilon_t - \boldsymbol\epsilon_\theta \left(\sqrt{\bar\alpha_t} x_0 + \sqrt{1 - \bar\alpha_t} \boldsymbol\epsilon_t, t\right) \right\|^2 \right]$$
 We can notice that $L_t$ is a weighted form of a square difference. To simply it, they removed these weights and aggregate these terms together. Considering those weights should also work, but has some computational issues.
-The final objective used by the algorithm is :$$\begin{align*} L_t^{\text{simple}} &= \mathbb{E}_{t \sim [1,T],\mathbf x_0,\boldsymbol\epsilon_t} \left[ \left\| \boldsymbol\epsilon_t - \boldsymbol\epsilon_\theta(\mathbf x_t, t) \right\|^2 \right] \\ &= \mathbb{E}_{t \sim [1,T],\mathbf x_0,\boldsymbol\epsilon_t} \left[ \left\| \boldsymbol\epsilon_t - \boldsymbol\epsilon_\theta\left(\sqrt{\bar\alpha_t} \mathbf x_0 + \sqrt{1 - \bar\alpha_t} \boldsymbol\epsilon_t, t\right) \right\|^2 \right] \end{align*}$$
+The final objective used by the algorithm is :$$\begin{align*} L_\theta^{\text{simple}} &= \mathbb{E}_{t \sim [1,T],\mathbf x_0,\boldsymbol\epsilon_t} \left[ \left\| \boldsymbol\epsilon_t - \boldsymbol\epsilon_\theta(\mathbf x_t, t) \right\|^2 \right] \\ &= \mathbb{E}_{t \sim [1,T],\mathbf x_0,\boldsymbol\epsilon_t} \left[ \left\| \boldsymbol\epsilon_t - \boldsymbol\epsilon_\theta\left(\sqrt{\bar\alpha_t} \mathbf x_0 + \sqrt{1 - \bar\alpha_t} \boldsymbol\epsilon_t, t\right) \right\|^2 \right] \end{align*}$$
 ## Training and Sampling Algorithm (Simplified)
 ![[Pasted image 20240603134616.png]]
 ## Progressive Coding
-A method of image encoding that uses multiple scans rather than a single scan. (A scan is a single pass through the data of one or more components in an image.) The first scan encodes a rough approximation to the image that is recognizable and can be transmitted quickly compared to the total transmission time of the image. Subsequent scans refine the appearance of the image. Progressive encoding is one of the options in the [JPEG](https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/jpeg#1O11JPEG) standard. (pasted from https://www.encyclopedia.com/computing/dictionaries-thesauruses-pictures-and-press-releases/progressive-encoding)
+> A method of image encoding that uses multiple scans rather than a single scan. (A scan is a single pass through the data of one or more components in an image.) The first scan encodes a rough approximation to the image that is recognizable and can be transmitted quickly compared to the total transmission time of the image. Subsequent scans refine the appearance of the image. Progressive encoding is one of the options in the [JPEG](https://www.encyclopedia.com/science-and-technology/computers-and-electrical-engineering/computers-and-computing/jpeg#1O11JPEG) standard. 
+> (pasted from https://www.encyclopedia.com/computing/dictionaries-thesauruses-pictures-and-press-releases/progressive-encoding)
+
 The algorithm pseudocode mentioned in the DDPM paper:
 ![[Pasted image 20240605122821.png]]
-Following plot shows something... I don't quite understand but it should be helpful to understand latent diffusion models. 
-At each time t, the **distortion** is calculated as the root mean squared error $\sqrt{\| \mathbf x_0 - \hat{\mathbf x}_0 \|^2 / D}$, and the **rate** is calculated as the cumulative number of bits received so far at time t.
+- Here we define an estimation of the original image as: $\mathbf x_0\approx\hat{\mathbf x}_0=(\mathbf x_t-\sqrt{1-\bar\alpha_t}\boldsymbol\epsilon_\theta(\mathbf x_t))/\sqrt{\bar\alpha_t}$.
+- At each time t, the **distortion** is calculated as the root mean squared error $\sqrt{\| \mathbf x_0 - \hat{\mathbf x}_0 \|^2 / D}$, and the **rate** is calculated as the **cumulative number of bits received so far** at time t (I believe the concepts of bits come from the **information theory**, and has some calculation methods but I don't know the details).
 ![[Pasted image 20240605123422.png]]
-
+- Intuitively, it shows that in earlier steps, it does not need so many bits to decrease the distortion (recover some general structures of the image). However, in last several steps, it needs much more bits to decrease imperceptible distortions (more details).
+-  It seems that the diffusion model does not work efficiently with details, and that is also the reason lossless codelengths of the diffusion model is not so competitive. Then here comes the idea of latent diffusion model to eliminate this disadvantage.
 ## Interpolation
 The idea is to mix two pictures in the latent space with a weight factor $\lambda$, and then use the reverse steps to recover the interpolation image.
 $$\begin{align*}
 \mathbf x_0, \mathbf x_0' &\sim q(\mathbf x_0) \\
 \mathbf x_t, \mathbf x_t' &\sim q(\mathbf x_t\mid\mathbf x_0) \\
-\bar{\mathbf x}_t &= (1-\lambda)\mathbf x_0 + \lambda \mathbf x_0' \\
-\bar{\mathbf x}_0 &\sim p(\mathbf x_0 \mid \bar{\mathbf x}_t)
+\bar{\mathbf x}_t &= (1-\lambda)\mathbf x_t + \lambda \mathbf x_t' \\
+\bar{\mathbf x}_0 &\sim p(\bar{\mathbf x}_0 \mid \bar{\mathbf x}_t)
 \end{align*}$$
 ![[Pasted image 20240605105848.png]]
 From the image above, we can see some patterns:
