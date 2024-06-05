@@ -1,0 +1,165 @@
+{
+  "main": {
+    "id": "cad26a5f136dfb9b",
+    "type": "split",
+    "children": [
+      {
+        "id": "e237c6621c3194ea",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "86a4de6382f6264a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Diffusion Model Notes.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a80519266addf3cd",
+    "type": "split",
+    "children": [
+      {
+        "id": "0ab61be57b4f7a04",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f866e654b19dbf58",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "byCreatedTimeReverse"
+              }
+            }
+          },
+          {
+            "id": "2d8b8b94643e27be",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ed644396045c618f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 215.5
+  },
+  "right": {
+    "id": "b1fd0f7b4bee9398",
+    "type": "split",
+    "children": [
+      {
+        "id": "445b8d758c9d2075",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8984a8eb089b7ff2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Diffusion Model Notes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7e6e97ccf7994732",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Diffusion Model Notes.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ae66d2639d4d8f93",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "c062e0b29294baea",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Diffusion Model Notes.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "86a4de6382f6264a",
+  "lastOpenFiles": [
+    "Pasted image 20240605123422.png",
+    "Pasted image 20240605122821.png",
+    "Pasted image 20240605105848.png",
+    "Pasted image 20240604104937 1.png",
+    "Diffusion Model Notes.md",
+    "Pasted image 20240603134616.png",
+    "Pasted image 20240604104937.png",
+    "Pasted image 20240604104349.png",
+    "Pasted image 20240604104633.png",
+    "Hey dude!.md",
+    "2024-06-03.md",
+    "Info&Catelogs.md"
+  ]
+}
