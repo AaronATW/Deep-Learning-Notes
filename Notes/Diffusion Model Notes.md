@@ -2,6 +2,7 @@ This is my notes based on these tutorials:
 https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
 https://cvpr2022-tutorial-diffusion-models.github.io/
 https://www.youtube.com/watch?v=cS6JQpEY9cs
+https://arxiv.org/abs/2201.09865
 ## Forward Diffusion Process
 Totally T steps of adding Gaussian noises into the real data.
 $$\begin{align}
@@ -49,7 +50,6 @@ The algorithm pseudocode mentioned in the DDPM paper:
 ![[Pasted image 20240605122821.png]]
 Following plot shows something... I don't quite understand but it should be helpful to understand latent diffusion models. 
 At each time t, the **distortion** is calculated as the root mean squared error $\sqrt{\| \mathbf x_0 - \hat{\mathbf x}_0 \|^2 / D}$, and the **rate** is calculated as the cumulative number of bits received so far at time t.
-Maybe that works a bit...
 ![[Pasted image 20240605123422.png]]
 
 ## Interpolation
@@ -66,7 +66,10 @@ From the image above, we can see some patterns:
 - With more steps (about 500 steps), we can see some natural and smooth transitions semantically. 
 - However, when we use all of the 1000 steps, the latent variable seems to be totally Gaussian, and the interpolation images seem to be random. 
 - More steps allow for more deviation from the original two images.
+##  Inpainting
+Pasted from the paper https://arxiv.org/abs/2201.09865:
+![[Pasted image 20240605130820.png]]
 ## Latent Diffusion Model
 ![[Pasted image 20240604104349.png]]
-Adding a discriminator will improve the quality of the images.
+Adding a **discriminator** will improve the quality of the images.
 ![[Pasted image 20240604104633.png]]![[Pasted image 20240604104937.png]]

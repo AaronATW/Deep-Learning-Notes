@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Diffusion Model Notes.md",
+                "file": "Notes/Diffusion Model Notes.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "image",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 215.5
+    "width": 292.5,
+    "collapsed": true
   },
   "right": {
     "id": "b1fd0f7b4bee9398",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Diffusion Model Notes.md",
+                "file": "Notes/Diffusion Model Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Diffusion Model Notes.md",
+                "file": "Notes/Diffusion Model Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Diffusion Model Notes.md"
+                "file": "Notes/Diffusion Model Notes.md"
               }
             }
           }
@@ -149,16 +150,19 @@
   },
   "active": "86a4de6382f6264a",
   "lastOpenFiles": [
+    "Hey dude!.md",
+    "Notes/Diffusion Model Notes.md",
+    "Pasted image 20240605130820.png",
+    "Pasted image 20240605133553.png",
+    "Notes",
+    "Pasted image 20240604104349.png",
+    "Pasted image 20240603134616.png",
+    "Pasted image 20240604104937 1.png",
+    "Pasted image 20240605130800.png",
+    "Pasted image 20240605130746.png",
     "Pasted image 20240605123422.png",
     "Pasted image 20240605122821.png",
     "Pasted image 20240605105848.png",
-    "Pasted image 20240604104937 1.png",
-    "Diffusion Model Notes.md",
-    "Pasted image 20240603134616.png",
-    "Pasted image 20240604104937.png",
-    "Pasted image 20240604104349.png",
-    "Pasted image 20240604104633.png",
-    "Hey dude!.md",
     "2024-06-03.md",
     "Info&Catelogs.md"
   ]
