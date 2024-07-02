@@ -1,4 +1,6 @@
 {
   "userIgnoreFilters": null,
-  "newFileLocation": "current"
+  "newFileLocation": "current",
+  "attachmentFolderPath": "./Attachments",
+  "promptDelete": false
 }

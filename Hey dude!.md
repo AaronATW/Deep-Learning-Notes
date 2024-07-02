@@ -1,6 +1,6 @@
 ## Dijkstra algorithm
 They say that even a girl doesn't want some diamond also doesn't want you to be that one.
-$/summation_a^b$ 
+$$\sum_a^b c$$
 $$P(A \mid B)=\frac{P(A,B)}{P(B)}$$
 $P(A)=INT(MAX) \hat{RFP}$
 ```
@@ -17,7 +17,7 @@ p(y)=\int_\infty^{-\infty} p(x,y)dx
 $$
 
 > [!NOTE] I dont 
-> Hey
+> Hey I just wanna look at it and see what happens...
 ---
 
 ---
